@@ -1,0 +1,13 @@
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  max-width: 100%;
+  min-height: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: 0 0 76px;
+  position: relative;
+}

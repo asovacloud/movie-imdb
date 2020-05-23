@@ -1,0 +1,20 @@
+.header .navbar-brand {
+  margin-right: 1.5rem;
+}
+
+.header .navbar-brand svg {
+  width: 64px;
+  height: auto;
+}
+
+.header .navbar-nav li {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.125rem;
+}
+
+.header .badge {
+  margin: 0 0 0 0 !important;
+  position: relative;
+  top: -2px;
+}
