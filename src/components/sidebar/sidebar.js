@@ -56,7 +56,6 @@ const Sidebar = () => {
               id='checkbox3'
             />
           </MDBFormInline>
-          {/* <MDBBtn size="sm" className="text-center w-100 m-0"></MDBBtn> */}
           <MDBBtn size="md" className="text-center w-100 ml-0 mr-0 mb-0">Clear Filter</MDBBtn>
         </MDBCardBody>
       </MDBCard>

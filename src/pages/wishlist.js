@@ -1,10 +1,20 @@
 import React from 'react';
+import { MDBTable} from 'mdbreact';
+import WishlistHeader from '../components/wishlist-header';
+import WishlistContent from '../components/wishlist-content';
 
-const Wishlist = () => {
+const Wishlist = ({ movieWishlist, removeMovieWishlist }) => {
+
   return (
-    <>
-      <p>On that place should be a table with a wishlist.</p>
-    </>
+    <div className="wishlist">
+      <MDBTable responsive>
+        <WishlistHeader />
+        <WishlistContent
+          movieWishlist={ movieWishlist }
+          removeMovieWishlist={ removeMovieWishlist }
+        />
+      </MDBTable>
+    </div>
   );
 };
 

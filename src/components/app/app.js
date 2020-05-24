@@ -1,13 +1,7 @@
 import React, { Component } from 'react'
-import {
-  MDBContainer,
-  MDBRow,
-} from 'mdbreact';
+import { MDBContainer } from 'mdbreact';
 import Header from '../header';
-// import MainTitle from '../main-title';
-// import Sidebar from '../sidebar';
-// import CardItemsList from '../card-items-list';
-import { Home, NotFound, } from '../../pages';
+import { Home, Wishlist, NotFound, } from '../../pages';
 import Footer from '../footer';
 import {
   BrowserRouter as Router,
@@ -81,7 +75,13 @@ export default class App extends Component {
               />
             </Route>
             <Route path="/wishlist">
-              <p>Wishlist content</p>
+              <Wishlist
+                movieWishlist={ movieWishlist }
+                removeMovieWishlist={ this.removeMovieWishlist }
+              />
+            </Route>
+            <Route path="/not-found">
+              <NotFound />
             </Route>
           </MDBContainer>
         </Switch>

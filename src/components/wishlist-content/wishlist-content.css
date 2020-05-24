@@ -1,0 +1,10 @@
+.wishlist .wishlist-content-image {
+    display: block;
+    margin: 0;
+    width: 40px;
+    height: auto;
+}
+
+.wishlist td {
+    vertical-align: middle;
+}
