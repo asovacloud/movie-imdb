@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
-import { MDBInput, MDBFormInline,
-  MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardHeader, MDBBtn, MDBContainer, MDBRow, MDBCol,
-  MDBCardImage,
-  MDBIcon,
-  MDBPagination, MDBPageItem, MDBPageNav,
+import {
+  MDBContainer,
+  MDBRow,
 } from 'mdbreact';
 import Header from '../header';
-import MainTitle from '../main-title';
-import Sidebar from '../sidebar';
-import CardItemsList from '../card-items-list';
+// import MainTitle from '../main-title';
+// import Sidebar from '../sidebar';
+// import CardItemsList from '../card-items-list';
+import { Home, NotFound, } from '../../pages';
 import Footer from '../footer';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
 
 import './app.css';
 
@@ -61,22 +65,28 @@ export default class App extends Component {
       movieWishlist,
     } = this.state;
     return (
-      <>
+      <Router>
         <Header wishlistCount={ movieWishlist.length } />
-        <MDBContainer>
-          <MainTitle />
-          <MDBRow>
-            <Sidebar />
-            <CardItemsList
-              movieData={ movieData }
-              addMovieWishlist={ this.addMovieWishlist }
-              removeMovieWishlist={ this.removeMovieWishlist }
-              movieWishlist={ movieWishlist }
-            />
-          </MDBRow>
-        </MDBContainer>
+        <Switch>
+          <MDBContainer>
+            <Route
+              path="/"
+              exact
+            >
+              <Home
+                movieData={ movieData }
+                movieWishlist={ movieWishlist }
+                addMovieWishlist={ this.addMovieWishlist }
+                removeMovieWishlist={ this.removeMovieWishlist }
+              />
+            </Route>
+            <Route path="/wishlist">
+              <p>Wishlist content</p>
+            </Route>
+          </MDBContainer>
+        </Switch>
         <Footer />
-      </>
+      </Router>
     );
   }
 }

@@ -1,7 +1,12 @@
 import React from 'react'
-import { MDBInput, MDBFormInline,
-  MDBCard, MDBCardBody, MDBCardHeader, MDBBtn, MDBCol,
-  MDBPagination, MDBPageItem, MDBPageNav,
+import {
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+  MDBCardHeader,
+  MDBCol,
+  MDBFormInline,
+  MDBInput,
 } from 'mdbreact';
 
 import './sidebar.css';
