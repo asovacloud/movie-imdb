@@ -13,12 +13,15 @@ import './app.css';
 
 export default class App extends Component {
 
+  thisMovieWishlist = window.localStorage.getItem('movieWishlist')
+    ? JSON.parse(window.localStorage.getItem('movieWishlist')) : [];
+
   state = {
     movieData: [],
     totalPages: 0,
     currentPage: 1,
     sort_by: 'popularity.desc',
-    movieWishlist: [],
+    movieWishlist: this.thisMovieWishlist,
   }
 
   componentDidMount() {
@@ -40,6 +43,7 @@ export default class App extends Component {
       const newMovieWishlist = state.movieWishlist.filter(movie => {
         return movie.id !== id;
       });
+      window.localStorage.setItem('movieWishlist', JSON.stringify(newMovieWishlist));
       return {
         movieWishlist: newMovieWishlist,
       }
@@ -49,6 +53,7 @@ export default class App extends Component {
   addMovieWishlist = data => {
     this.setState(state => {
       const newMovieWishlist = [...state.movieWishlist, ...data];
+      window.localStorage.setItem('movieWishlist', JSON.stringify(newMovieWishlist));
       return { movieWishlist: newMovieWishlist, }
     });
   }
@@ -62,28 +67,30 @@ export default class App extends Component {
       <Router>
         <Header wishlistCount={ movieWishlist.length } />
         <Switch>
-          <MDBContainer>
-            <Route
-              path="/"
-              exact
-            >
-              <Home
-                movieData={ movieData }
-                movieWishlist={ movieWishlist }
-                addMovieWishlist={ this.addMovieWishlist }
-                removeMovieWishlist={ this.removeMovieWishlist }
-              />
-            </Route>
-            <Route path="/wishlist">
-              <Wishlist
-                movieWishlist={ movieWishlist }
-                removeMovieWishlist={ this.removeMovieWishlist }
-              />
-            </Route>
-            <Route path="/not-found">
-              <NotFound />
-            </Route>
-          </MDBContainer>
+          <>
+            <MDBContainer>
+              <Route
+                path="/"
+                exact
+              >
+                <Home
+                  movieData={ movieData }
+                  movieWishlist={ movieWishlist }
+                  addMovieWishlist={ this.addMovieWishlist }
+                  removeMovieWishlist={ this.removeMovieWishlist }
+                />
+              </Route>
+              <Route path="/wishlist">
+                <Wishlist
+                  movieWishlist={ movieWishlist }
+                  removeMovieWishlist={ this.removeMovieWishlist }
+                />
+              </Route>
+              <Route path="/not-found">
+                <NotFound />
+              </Route>
+            </MDBContainer>
+          </>
         </Switch>
         <Footer />
       </Router>

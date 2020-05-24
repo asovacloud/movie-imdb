@@ -6,11 +6,11 @@ import {
 
 import './main-title.css';
 
-const MainTitle = () => {
+const MainTitle = ({ title }) => {
   return (
     <MDBRow>
       <MDBCol size="12">
-        <h2 className="mb-3">Films</h2>
+        <h2 className="mb-3">{ title }</h2>
       </MDBCol>
     </MDBRow>
   );

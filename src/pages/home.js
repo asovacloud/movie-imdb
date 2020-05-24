@@ -12,7 +12,7 @@ const Home = ({
               }) => {
   return (
     <>
-      <MainTitle />
+      <MainTitle title="Films" />
       <MDBRow>
         <Sidebar />
         <CardItemsList

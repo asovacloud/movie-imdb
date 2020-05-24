@@ -7,8 +7,10 @@ import {
   MDBPageNav,
 } from 'mdbreact';
 import CardItem from '../card-item';
+import Spinner from '../spinner';
 
 import './card-items-list.css';
+import Sidebar from "../sidebar";
 
 const CardItemsList = props => {
   const {
@@ -18,31 +20,32 @@ const CardItemsList = props => {
     movieWishlist,
   } = props;
   const movieWishlistIndexList = movieWishlist.map(movie => movie.id);
+
+  const content = movieData.map(({ id, poster_path: imgUrl, overview, title, vote_average: voteAverage }) => {
+    const wishlistData = movieData.filter(movie => movie.id === id);
+    const hasWishlist = (movieWishlistIndexList.indexOf(id)) !== -1;
+    return (
+      <CardItem
+        key={ id }
+        imgUrl={ imgUrl }
+        overview={ overview }
+        title={ title }
+        voteAverage={ voteAverage }
+        removeMovieWishlist={ () => removeMovieWishlist(wishlistData) }
+        addMovieWishlist={ () => addMovieWishlist(wishlistData) }
+        hasWishlist={ hasWishlist }
+      />
+    );
+  });
+
   return (
     <MDBCol size="9" className="card-items-list">
       <MDBRow>
-        {
-          movieData.map(({ id, poster_path: imgUrl, overview, title, vote_average: voteAverage }) => {
-            const wishlistData = movieData.filter(movie => movie.id === id);
-            const hasWishlist = (movieWishlistIndexList.indexOf(id)) !== -1;
-            return (
-              <CardItem
-                key={ id }
-                imgUrl={ imgUrl }
-                overview={ overview }
-                title={ title }
-                voteAverage={ voteAverage }
-                removeMovieWishlist={ () => removeMovieWishlist(wishlistData) }
-                addMovieWishlist={ () => addMovieWishlist(wishlistData) }
-                hasWishlist={ hasWishlist }
-              />
-            );
-          })
-        }
+        { movieData.length > 0 ? content : <Spinner /> }
       </MDBRow>
       
       <MDBRow>
-      <MDBPagination color="blue" className="mt-3 ml-0 mr-0 mb-0">
+      <MDBPagination color="blue" className="mt-3 ml-0 mr-0 mb-3">
         <MDBPageItem disabled>
           <MDBPageNav aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>

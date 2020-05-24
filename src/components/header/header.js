@@ -34,11 +34,11 @@ const addBage = wishlistCount ? <MDBBadge color="danger" className="ml-2">{ wish
       <MDBNavbarToggler onClick={this.toggleCollapse} />
       <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
         <MDBNavbarNav left>
-          <MDBNavItem active>
-            <MDBNavLink to="/">Home</MDBNavLink>
+          <MDBNavItem>
+            <MDBNavLink exact to="/">Home</MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
-            <MDBNavLink to="/wishlist">Wishlist { addBage }</MDBNavLink>
+            <MDBNavLink exact to="/wishlist">Wishlist { addBage }</MDBNavLink>
           </MDBNavItem>
         </MDBNavbarNav>
         <MDBNavbarNav right>
