@@ -19,7 +19,6 @@ const Wishlist = ({ movieWishlist, removeMovieWishlist }) => {
   return (
     <div className="wishlist">
       <MainTitle title="Wishlist" />
-
       { movieWishlist.length > 0 ? tableWishlist : noWishlist }
     </div>
   );

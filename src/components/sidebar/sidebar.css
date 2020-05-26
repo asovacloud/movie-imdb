@@ -1,0 +1,10 @@
+.sidebar .genre-cloud .btn {
+    margin: 0 5px 5px 0;
+    padding: 0.2rem 0.5rem;
+    font-size: 11px;
+}
+
+.sidebar .genre-cloud .btn.active {
+    background-color: #3f729b !important;
+    color: white;
+}

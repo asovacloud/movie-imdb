@@ -10,7 +10,6 @@ import CardItem from '../card-item';
 import Spinner from '../spinner';
 
 import './card-items-list.css';
-import Sidebar from "../sidebar";
 
 const CardItemsList = props => {
   const {

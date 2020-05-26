@@ -9,12 +9,21 @@ const Home = ({
                 movieWishlist,
                 addMovieWishlist,
                 removeMovieWishlist,
+                addGenre,
+                onChangeSort,
+                onChangeLanguage,
+                onClearFilter,
               }) => {
   return (
     <>
       <MainTitle title="Films" />
       <MDBRow>
-        <Sidebar />
+        <Sidebar
+          addGenre={ addGenre }
+          onChangeSort={ onChangeSort }
+          onChangeLanguage={ onChangeLanguage }
+          onClearFilter={ onClearFilter }
+        />
         <CardItemsList
           movieData={ movieData }
           addMovieWishlist={ addMovieWishlist }

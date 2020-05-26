@@ -8,6 +8,7 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import { API_URL, API_KEY_3 } from '../../utils/api';
 
 import './app.css';
 
@@ -22,10 +23,16 @@ export default class App extends Component {
     currentPage: 1,
     sort_by: 'popularity.desc',
     movieWishlist: this.thisMovieWishlist,
+    currentGenre: [],
+    language: 'en-US',
+    genreList: '',
   }
 
-  componentDidMount() {
-    fetch('https://api.themoviedb.org/3/discover/movie?api_key=3f4ca4f3a9750da53450646ced312397&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1')
+  getMovies() {
+    const addGenre = (this.state.genreList) ? `&with_genres=${ this.state.genreList }` : '';
+    const url = `${ API_URL }/discover/movie?api_key=${ API_KEY_3 }&sort_by=${ this.state.sort_by }&page=${ this.state.currentPage }&language=${ this.state.language }${ addGenre }`;
+    console.log('url:', url);
+    fetch(url)
       .then(response => {
         return response.json();
       })
@@ -35,7 +42,19 @@ export default class App extends Component {
           movieData: results,
           totalPages: total_pages,
         });
-      })
+      });
+  }
+
+  componentDidMount() { this.getMovies(); }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      ( prevState.sort_by !== this.state.sort_by )
+      || ( prevState.language !== this.state.language )
+      || ( prevState.genreList !== this.state.genreList )
+    ) {
+      this.getMovies();
+    }
   }
 
   removeMovieWishlist = ([{ id }]) => {
@@ -55,6 +74,28 @@ export default class App extends Component {
       const newMovieWishlist = [...state.movieWishlist, ...data];
       window.localStorage.setItem('movieWishlist', JSON.stringify(newMovieWishlist));
       return { movieWishlist: newMovieWishlist, }
+    });
+  }
+
+  addGenre = genreList => {
+    const newGenreIdList = genreList.map(genre => genre.id).join(',');
+    this.setState({ genreList: newGenreIdList });
+  }
+
+  onChangeSort = sort_by => {
+    this.setState({ sort_by });
+  }
+
+  onChangeLanguage = language => {
+    this.setState({ language });
+  }
+
+  onClearFilter = () => {
+    this.setState({
+      sort_by: 'popularity.desc',
+      currentGenre: [],
+      language: 'en-US',
+      genreList: '',
     });
   }
 
@@ -78,6 +119,10 @@ export default class App extends Component {
                   movieWishlist={ movieWishlist }
                   addMovieWishlist={ this.addMovieWishlist }
                   removeMovieWishlist={ this.removeMovieWishlist }
+                  addGenre={ this.addGenre }
+                  onChangeSort={ this.onChangeSort }
+                  onChangeLanguage={ this.onChangeLanguage }
+                  onClearFilter={ this.onClearFilter }
                 />
               </Route>
               <Route path="/wishlist">
