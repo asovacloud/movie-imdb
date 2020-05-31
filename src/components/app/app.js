@@ -18,20 +18,19 @@ export default class App extends Component {
     ? JSON.parse(window.localStorage.getItem('movieWishlist')) : [];
 
   state = {
-    movieData: [],
-    totalPages: 0,
     currentPage: 1,
-    sort_by: 'popularity.desc',
-    movieWishlist: this.thisMovieWishlist,
     currentGenre: [],
     language: 'en-US',
-    genreList: '',
+    movieData: [],
+    movieWishlist: this.thisMovieWishlist,
+    sort_by: 'popularity.desc',
+    totalPages: 0,
   }
 
   getMovies() {
-    const addGenre = (this.state.genreList) ? `&with_genres=${ this.state.genreList }` : '';
+    const newGenreIdList = this.state.currentGenre.map(genre => genre.id).join(',');
+    const addGenre = newGenreIdList ? `&with_genres=${ newGenreIdList }` : '';
     const url = `${ API_URL }/discover/movie?api_key=${ API_KEY_3 }&sort_by=${ this.state.sort_by }&page=${ this.state.currentPage }&language=${ this.state.language }${ addGenre }`;
-    console.log('url:', url);
     fetch(url)
       .then(response => {
         return response.json();
@@ -51,7 +50,7 @@ export default class App extends Component {
     if (
       ( prevState.sort_by !== this.state.sort_by )
       || ( prevState.language !== this.state.language )
-      || ( prevState.genreList !== this.state.genreList )
+      || ( prevState.currentGenre !== this.state.currentGenre )
     ) {
       this.getMovies();
     }
@@ -77,11 +76,6 @@ export default class App extends Component {
     });
   }
 
-  addGenre = genreList => {
-    const newGenreIdList = genreList.map(genre => genre.id).join(',');
-    this.setState({ genreList: newGenreIdList });
-  }
-
   onChangeSort = sort_by => {
     this.setState({ sort_by });
   }
@@ -95,12 +89,28 @@ export default class App extends Component {
       sort_by: 'popularity.desc',
       currentGenre: [],
       language: 'en-US',
-      genreList: '',
+    });
+  }
+
+  addGenre = data => {
+    this.setState(({ currentGenre }) => {
+      const newCurrentGenre = [...currentGenre, data];
+      return { currentGenre: newCurrentGenre, }
+    });
+  }
+
+  removeGenre = data => {
+    this.setState(({ currentGenre }) => {
+      const newCurrentGenre = currentGenre.filter(({ id }) => id !== data.id);
+      return { currentGenre: newCurrentGenre, }
     });
   }
 
   render() {
     const {
+      currentGenre,
+      language,
+      sort_by,
       movieData,
       movieWishlist,
     } = this.state;
@@ -115,11 +125,15 @@ export default class App extends Component {
                 exact
               >
                 <Home
+                  addGenre={ this.addGenre }
+                  addMovieWishlist={ this.addMovieWishlist }
+                  currentGenre={ currentGenre }
+                  language={ language }
                   movieData={ movieData }
                   movieWishlist={ movieWishlist }
-                  addMovieWishlist={ this.addMovieWishlist }
+                  removeGenre={ this.removeGenre }
                   removeMovieWishlist={ this.removeMovieWishlist }
-                  addGenre={ this.addGenre }
+                  sort_by={ sort_by }
                   onChangeSort={ this.onChangeSort }
                   onChangeLanguage={ this.onChangeLanguage }
                   onClearFilter={ this.onClearFilter }

@@ -1,14 +1,15 @@
 import React from 'react';
-import { MDBBtn, MDBTableBody } from 'mdbreact';
+import {MDBBtn, MDBCardImage, MDBTableBody} from 'mdbreact';
 
+import noPhoto from './no_photo.jpg';
 import './wishlist-content.css';
 
 const WishlistContent = ({ movieWishlist, removeMovieWishlist }) => {
   const content = movieWishlist.map(({
     id,
-    poster_path,
+    poster_path: poster,
     title,
-    vote_average,
+    vote_average: vote,
   }, inx) => {
       return (
         <tr
@@ -16,16 +17,14 @@ const WishlistContent = ({ movieWishlist, removeMovieWishlist }) => {
         >
           <td className="align-middle">{ inx + 1 }</td>
           <td>
-            <img
-              className="wishlist-content-image align-middle"
-              src={ `https://image.tmdb.org/t/p/w500${poster_path}` }
-              alt={ title }
-            />
+            <MDBCardImage
+              className="wishlist-content-image align-middle" src={ poster ? `https://image.tmdb.org/t/p/w500${ poster }` : noPhoto }
+              waves />
           </td>
           <td className="align-middle">{ title }</td>
           <td
             className="text-center align-middle"
-          >{ vote_average }</td>
+          >{ vote }</td>
           <td
             className="text-center align-middle"
           >

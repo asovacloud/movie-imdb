@@ -12,12 +12,14 @@ import {
   CircularProgressbar,
   buildStyles,
 } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
 
+import noPhoto from './no_photo.jpg';
+import 'react-circular-progressbar/dist/styles.css';
 import './card-item.css';
 
 const CardItem = props => {
   const {
+    backdrop,
     imgUrl,
     overview,
     title,
@@ -38,7 +40,10 @@ const CardItem = props => {
           >
             { hasWishlist ? <MDBIcon icon="heart" /> : <MDBIcon far icon="heart" /> }
           </button>
-          <MDBCardImage className="img-fluid" src={ `https://image.tmdb.org/t/p/w500/${imgUrl}` } waves />
+          <div className="card-item-photo-holder">
+            <MDBCardImage className="img-fluid" src={ imgUrl ? `https://image.tmdb.org/t/p/w500/${imgUrl}` : noPhoto } waves />
+            <MDBCardImage className="img-fluid img-fixed" src={ backdrop ? `https://image.tmdb.org/t/p/w500/${ backdrop }` : noPhoto } waves />
+          </div>
           <CircularProgressbar
             value={ voteAverageSum }
             text={`${voteAverageSum}%`}

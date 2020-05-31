@@ -5,11 +5,15 @@ import CardItemsList from '../components/card-items-list';
 import { MDBRow } from 'mdbreact';
 
 const Home = ({
+                addGenre,
+                addMovieWishlist,
+                currentGenre,
+                language,
                 movieData,
                 movieWishlist,
-                addMovieWishlist,
+                removeGenre,
                 removeMovieWishlist,
-                addGenre,
+                sort_by,
                 onChangeSort,
                 onChangeLanguage,
                 onClearFilter,
@@ -20,6 +24,10 @@ const Home = ({
       <MDBRow>
         <Sidebar
           addGenre={ addGenre }
+          currentGenre={ currentGenre }
+          language={ language }
+          sort_by={ sort_by }
+          removeGenre={ removeGenre }
           onChangeSort={ onChangeSort }
           onChangeLanguage={ onChangeLanguage }
           onClearFilter={ onClearFilter }

@@ -13,11 +13,11 @@ import './sidebar.css';
 class Sidebar extends Component {
   state = {
     genreList: [],
-    currentGenre: [],
     languageList: [],
   }
 
   componentDidMount() {
+
     fetch(`${ API_URL }/genre/movie/list?api_key=${ API_KEY_3 }`)
       .then(response => {
         return response.json();
@@ -26,45 +26,15 @@ class Sidebar extends Component {
         const newGenreList = data.genres;
         this.setState({ genreList: newGenreList });
       });
+
     fetch(`${ API_URL }/configuration/languages?api_key=${ API_KEY_3 }`)
       .then(response => {
         return response.json();
       })
       .then(data => {
         this.setState({ languageList: data });
-        // this.setState({ genreList: newGenreList });
       });
-  }
 
-  toggleGenre(currentGenre, genreList, data, state) {
-    const inxCurrentGenre = genreList.findIndex(genre => genre.id === data.id);
-    const updateGenreList = [ ...genreList ];
-    updateGenreList[inxCurrentGenre].active = state
-    return updateGenreList;
-  }
-
-  addGenre(data) {
-    this.setState(({ currentGenre, genreList  }) => {
-      const newGenre = [...currentGenre, data];
-      const updateGenreList = this.toggleGenre(currentGenre, genreList, data, true);
-      this.props.addGenre(newGenre);
-      return {
-        currentGenre: newGenre,
-        genreList: updateGenreList,
-      };
-    });
-  }
-
-  removeGenre(data) {
-    this.setState(({ currentGenre, genreList }) => {
-      const newGenre = currentGenre.filter(({ id }) => id !== data.id);
-      const updateGenreList = this.toggleGenre(currentGenre, genreList, data, false);
-      this.props.addGenre(newGenre);
-      return {
-        currentGenre: newGenre,
-        genreList: updateGenreList,
-      };
-    });
   }
 
   onClearFilterSidebar = () => {
@@ -78,32 +48,43 @@ class Sidebar extends Component {
       genreList,
       languageList,
     } = this.state;
+
     const {
+      addGenre,
+      currentGenre,
+      language,
+      sort_by,
+      removeGenre,
       onChangeLanguage,
       onChangeSort,
     } = this.props;
 
-    const genresList = <div className="genre-cloud">
-      {
-        genreList.map(genre => {
-          const { id, name } = genre;
-          const isActive = genre.active;
-          return (
-            <button
-              className={ `btn ${ isActive ? 'active' : '' }` }
-              key={ id }
-              onClick={ isActive ? this.removeGenre.bind(this, genre) : this.addGenre.bind(this, genre) }
-            >
-              { name }
-            </button>
-          );
-        })
-      }
-    </div>;
+    const currentGenreIdList = currentGenre.map(item => item.id);
+
+    const genresListContent = (
+      <div className="genre-cloud">
+        {
+          genreList.map(genre => {
+            const { id, name } = genre;
+            const isActive = currentGenreIdList.indexOf(id) !== -1;
+            return (
+              <button
+                className={ `btn ${ isActive ? 'active' : '' }` }
+                key={ id }
+                onClick={ () => isActive ? removeGenre(genre) : addGenre(genre)  }
+              >
+                  { name }
+              </button>
+            );
+          })
+        }
+      </div>
+    );
 
     const selectSortResult = <select
       className="custom-select custom-select-sm"
       onChange={ event => onChangeSort(event.target.value) }
+      value={ sort_by }
     >
       <option value="popularity.desc">Popularity Descending</option>
       <option value="popularity.asc">Popularity Ascending</option>
@@ -118,6 +99,7 @@ class Sidebar extends Component {
     const selectLanguage = <select
         onChange={ event => onChangeLanguage( event.target.value ) }
         className="custom-select custom-select-sm mb-3"
+        value={ language }
       >
       { languageList.map(({ iso_639_1, english_name  }) => <option key={ iso_639_1 } value={ iso_639_1 }>{ english_name }</option>) }
     </select>;
@@ -139,7 +121,7 @@ class Sidebar extends Component {
 
             <div  className="mb-3">
               <h6>Genres</h6>
-              { genresList }
+              { genresListContent }
             </div>
 
             <MDBBtn

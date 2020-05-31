@@ -20,7 +20,13 @@ const CardItemsList = props => {
   } = props;
   const movieWishlistIndexList = movieWishlist.map(movie => movie.id);
 
-  const content = movieData.map(({ id, poster_path: imgUrl, overview, title, vote_average: voteAverage }) => {
+  const content = movieData.map(({
+      id,
+      poster_path: imgUrl,
+      overview, title,
+      vote_average: voteAverage,
+      backdrop_path: backdrop,
+    }) => {
     const wishlistData = movieData.filter(movie => movie.id === id);
     const hasWishlist = (movieWishlistIndexList.indexOf(id)) !== -1;
     return (
@@ -29,6 +35,7 @@ const CardItemsList = props => {
         imgUrl={ imgUrl }
         overview={ overview }
         title={ title }
+        backdrop={ backdrop }
         voteAverage={ voteAverage }
         removeMovieWishlist={ () => removeMovieWishlist(wishlistData) }
         addMovieWishlist={ () => addMovieWishlist(wishlistData) }
