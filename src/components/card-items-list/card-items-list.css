@@ -15,3 +15,19 @@
 .card-items-list .card-text {
   width: 100%;
 }
+
+ul.pagination .page-item.next .page-link,
+ul.pagination .page-item.prev .page-link {
+  color: #3f729b;
+}
+
+ul.pagination .page-item.next.disabled .page-link,
+ul.pagination .page-item.prev.disabled .page-link {
+  color: #868e96;
+}
+
+ul.pagination .page-item.active .page-link,
+ul.pagination .active a {
+  background-color: #3f729b !important;
+  color: white !important;
+}

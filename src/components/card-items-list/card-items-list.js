@@ -2,20 +2,21 @@ import React from 'react'
 import {
   MDBCol,
   MDBRow,
-  MDBPagination,
-  MDBPageItem,
-  MDBPageNav,
 } from 'mdbreact';
 import CardItem from '../card-item';
 import Spinner from '../spinner';
+import ReactPaginate from 'react-paginate';
 
 import './card-items-list.css';
 
 const CardItemsList = props => {
   const {
+    changeCurrentPage,
+    currentPage,
     movieData,
     addMovieWishlist,
     removeMovieWishlist,
+    totalPages,
     movieWishlist,
   } = props;
   const movieWishlistIndexList = movieWishlist.map(movie => movie.id);
@@ -44,52 +45,37 @@ const CardItemsList = props => {
     );
   });
 
+  const pagination = <nav className="mt-3 mb-3" aria-label="Page navigation">
+    <ReactPaginate
+      previousLabel={ '◄' }
+      nextLabel={ '►' }
+      breakLabel={ '...' }
+      pageCount={ totalPages }
+      initialPage={ currentPage  - 1}
+      marginPagesDisplayed={ 2 }
+      pageRangeDisplayed={ 2 }
+      onPageChange={ data => changeCurrentPage(data) }
+      containerClassName={ 'pagination' }
+      pageClassName={ 'page-item' }
+      previousClassName={ 'page-item prev' }
+      nextClassName={ 'page-item next' }
+      breakClassName={ 'page-item' }
+      pageLinkClassName={ 'page-link' }
+      breakLinkClassName={ 'page-link' }
+      previousLinkClassName={ 'page-link' }
+      nextLinkClassName={ 'page-link' }
+      activeClassName={ 'active' }
+    />
+  </nav>;
+
   return (
     <MDBCol size="9" className="card-items-list">
       <MDBRow>
         { movieData.length > 0 ? content : <Spinner /> }
       </MDBRow>
-      
-      <MDBRow>
-      <MDBPagination color="blue" className="mt-3 ml-0 mr-0 mb-3">
-        <MDBPageItem disabled>
-          <MDBPageNav aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span className="sr-only">Previous</span>
-          </MDBPageNav>
-        </MDBPageItem>
-        <MDBPageItem active>
-          <MDBPageNav>
-            1 <span className="sr-only">(current)</span>
-          </MDBPageNav>
-        </MDBPageItem>
-        <MDBPageItem>
-          <MDBPageNav>
-            2
-          </MDBPageNav>
-        </MDBPageItem>
-        <MDBPageItem>
-          <MDBPageNav>
-            3
-          </MDBPageNav>
-        </MDBPageItem>
-        <MDBPageItem>
-          <MDBPageNav>
-            4
-          </MDBPageNav>
-        </MDBPageItem>
-        <MDBPageItem>
-          <MDBPageNav>
-            5
-          </MDBPageNav>
-        </MDBPageItem>
-        <MDBPageItem>
-          <MDBPageNav>
-            &raquo;
-          </MDBPageNav>
-        </MDBPageItem>
-      </MDBPagination>
-      </MDBRow>
+
+      { pagination }
+
     </MDBCol>
   );
 }

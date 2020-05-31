@@ -7,13 +7,16 @@ import { MDBRow } from 'mdbreact';
 const Home = ({
                 addGenre,
                 addMovieWishlist,
+                changeCurrentPage,
                 currentGenre,
+                currentPage,
                 language,
                 movieData,
                 movieWishlist,
                 removeGenre,
                 removeMovieWishlist,
                 sort_by,
+                totalPages,
                 onChangeSort,
                 onChangeLanguage,
                 onClearFilter,
@@ -33,10 +36,13 @@ const Home = ({
           onClearFilter={ onClearFilter }
         />
         <CardItemsList
-          movieData={ movieData }
           addMovieWishlist={ addMovieWishlist }
+          changeCurrentPage={ changeCurrentPage }
+          currentPage={ currentPage }
+          movieData={ movieData }
           removeMovieWishlist={ removeMovieWishlist }
           movieWishlist={ movieWishlist }
+          totalPages={ totalPages }
         />
       </MDBRow>
     </>

@@ -50,7 +50,8 @@ export default class App extends Component {
     if (
       ( prevState.sort_by !== this.state.sort_by )
       || ( prevState.language !== this.state.language )
-      || ( prevState.currentGenre !== this.state.currentGenre )
+      || ( prevState.currentGenre !== this.state.currentGenre)
+      || ( prevState.currentPage !== this.state.currentPage)
     ) {
       this.getMovies();
     }
@@ -106,14 +107,24 @@ export default class App extends Component {
     });
   }
 
+  changeCurrentPage = data => {
+    const newData = data.selected + 1;
+    this.setState({ currentPage: newData, });
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
   render() {
     const {
       currentGenre,
+      currentPage,
+      totalPages,
       language,
       sort_by,
       movieData,
       movieWishlist,
     } = this.state;
+
+    console.log('currentPage: ', currentPage);
     return (
       <Router>
         <Header wishlistCount={ movieWishlist.length } />
@@ -127,13 +138,16 @@ export default class App extends Component {
                 <Home
                   addGenre={ this.addGenre }
                   addMovieWishlist={ this.addMovieWishlist }
+                  changeCurrentPage={ this.changeCurrentPage }
                   currentGenre={ currentGenre }
+                  currentPage={ currentPage }
                   language={ language }
                   movieData={ movieData }
                   movieWishlist={ movieWishlist }
                   removeGenre={ this.removeGenre }
                   removeMovieWishlist={ this.removeMovieWishlist }
                   sort_by={ sort_by }
+                  totalPages={ totalPages }
                   onChangeSort={ this.onChangeSort }
                   onChangeLanguage={ this.onChangeLanguage }
                   onClearFilter={ this.onClearFilter }
