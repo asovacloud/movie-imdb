@@ -1,0 +1,23 @@
+.facts-info {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.facts-info li {
+  border-top: 1px solid rgba(0,0,0,0.3);
+  padding: 10px 0;
+}
+
+.facts-info .facts-info__title:after {
+  content: ':';
+}
+
+.facts-info .facts-info__text {
+  display: block;
+}
+
+.facts-info li:first-child {
+  border-top: none;
+  padding-top: 0;
+}

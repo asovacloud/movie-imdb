@@ -111,7 +111,7 @@ const SingleMovieBackgroundPoster = props => {
             <MDBCol md="8" className="background-poster__container-col">
               <h2 className="background-poster__title mb-1">
                 { name }
-                <span className="background-poster__release-date font-weight-lighter font-italic"> ({ dateYear })</span>
+                <span className="background-poster__release-date font-weight-lighter font-italic"> { dateYear && `(${ dateYear })` }</span>
               </h2>
               <div className="background-poster__title-info mb-2">
                 <span className="background-poster__date">{ releaseDate && getFormattedDate() }</span>

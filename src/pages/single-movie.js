@@ -5,7 +5,7 @@ import {
   MDBRow,
 } from 'mdbreact';
 import SingleMovieBackgroundPoster from '../components/single-movie-background-poster';
-import SingleMovieTabe from '../components/single-movie-tabs';
+import SingleMovieTabs from '../components/single-movie-tabs';
 import SingleMovieRecomendations from '../components/single-movie-recomendations';
 
 export default class SingleMovie extends Component {
@@ -30,6 +30,11 @@ export default class SingleMovie extends Component {
     return wishlistData.length > 0;
   }
 
+  convertNumber(number) {
+    return number.toString().split('').reverse().join('').match(/.{1,3}/g).reverse()
+      .map(item => item.toString().split('').reverse().join('')).join() + '.00'
+  }
+
   render() {
 
     const {
@@ -51,6 +56,7 @@ export default class SingleMovie extends Component {
     } = this.state.movieData;
 
     const {
+      id,
       addMovieWishlist,
       removeMovieWishlist,
     } = this.props;
@@ -61,9 +67,9 @@ export default class SingleMovie extends Component {
     const factsInfo = (
       <ul className="facts-info">
         <li><strong className="facts-info__title">Status</strong><span className="facts-info__text">{ status }</span></li>
-        <li><strong className="facts-info__title">Original Language</strong><span className="facts-info__text">{ language }</span></li>
-        <li><strong className="facts-info__title">Budget</strong><span className="facts-info__text">${ budget }</span></li>
-        <li><strong className="facts-info__title">Revenue</strong><span className="facts-info__text">${ revenue }</span></li>
+        <li><strong className="facts-info__title">Original Language</strong><span className="facts-info__text">{ language && language.toUpperCase() }</span></li>
+        <li><strong className="facts-info__title">Budget</strong><span className="facts-info__text">$ { budget && this.convertNumber(budget) }</span></li>
+        <li><strong className="facts-info__title">Revenue</strong><span className="facts-info__text">$ { revenue && this.convertNumber(revenue) }</span></li>
       </ul>
     );
 
@@ -86,10 +92,12 @@ export default class SingleMovie extends Component {
           hasWishlist = { this.checkHasWishlist }
         />
         <MDBRow>
-          <MDBCol md="8">
-            <SingleMovieTabe />
+          <MDBCol md="9">
+            <SingleMovieTabs
+              id={ id }
+            />
           </MDBCol>
-          <MDBCol md="4">
+          <MDBCol md="3">
             { factsInfo }
           </MDBCol>
         </MDBRow>
