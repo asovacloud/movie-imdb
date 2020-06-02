@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { MDBContainer } from 'mdbreact';
 import Header from '../header';
-import { Home, Wishlist, NotFound, } from '../../pages';
+import {
+  Home,
+  Wishlist,
+  SingleMovie,
+  NotFound, } from '../../pages';
 import Footer from '../footer';
 import {
   BrowserRouter as Router,
@@ -90,6 +94,7 @@ export default class App extends Component {
       sort_by: 'popularity.desc',
       currentGenre: [],
       language: 'en-US',
+      currentPage: 1,
     });
   }
 
@@ -124,47 +129,57 @@ export default class App extends Component {
       movieWishlist,
     } = this.state;
 
-    console.log('currentPage: ', currentPage);
     return (
       <Router>
         <Header wishlistCount={ movieWishlist.length } />
-        <Switch>
-          <>
-            <MDBContainer>
-              <Route
-                path="/"
-                exact
-              >
-                <Home
-                  addGenre={ this.addGenre }
+        <MDBContainer>
+          <Switch>
+            <Route
+              path="/"
+              exact
+            >
+              <Home
+                addGenre={ this.addGenre }
+                addMovieWishlist={ this.addMovieWishlist }
+                changeCurrentPage={ this.changeCurrentPage }
+                currentGenre={ currentGenre }
+                currentPage={ currentPage }
+                language={ language }
+                movieData={ movieData }
+                movieWishlist={ movieWishlist }
+                removeGenre={ this.removeGenre }
+                removeMovieWishlist={ this.removeMovieWishlist }
+                sort_by={ sort_by }
+                totalPages={ totalPages }
+                onChangeSort={ this.onChangeSort }
+                onChangeLanguage={ this.onChangeLanguage }
+                onClearFilter={ this.onClearFilter }
+              />
+            </Route>
+            <Route
+              path="/wishlist"
+              exact
+            >
+              <Wishlist
+                movieWishlist={ movieWishlist }
+                removeMovieWishlist={ this.removeMovieWishlist }
+              />
+            </Route>
+            <Route
+              path="/movie/:id"
+              render={ ({ match }) => {
+                const { id } = match.params;
+                return <SingleMovie
+                  id={ id }
+                  movieWishlist={ movieWishlist }
                   addMovieWishlist={ this.addMovieWishlist }
-                  changeCurrentPage={ this.changeCurrentPage }
-                  currentGenre={ currentGenre }
-                  currentPage={ currentPage }
-                  language={ language }
-                  movieData={ movieData }
-                  movieWishlist={ movieWishlist }
-                  removeGenre={ this.removeGenre }
-                  removeMovieWishlist={ this.removeMovieWishlist }
-                  sort_by={ sort_by }
-                  totalPages={ totalPages }
-                  onChangeSort={ this.onChangeSort }
-                  onChangeLanguage={ this.onChangeLanguage }
-                  onClearFilter={ this.onClearFilter }
-                />
-              </Route>
-              <Route path="/wishlist">
-                <Wishlist
-                  movieWishlist={ movieWishlist }
                   removeMovieWishlist={ this.removeMovieWishlist }
                 />
-              </Route>
-              <Route path="/not-found">
-                <NotFound />
-              </Route>
-            </MDBContainer>
-          </>
-        </Switch>
+              } }
+            />
+            <Route component={ NotFound } />
+          </Switch>
+        </MDBContainer>
         <Footer />
       </Router>
     );

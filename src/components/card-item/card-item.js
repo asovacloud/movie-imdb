@@ -12,6 +12,7 @@ import {
   CircularProgressbar,
   buildStyles,
 } from 'react-circular-progressbar';
+import { withRouter } from 'react-router-dom';
 
 import noPhoto from './no_photo.jpg';
 import 'react-circular-progressbar/dist/styles.css';
@@ -20,7 +21,9 @@ import './card-item.css';
 const CardItem = props => {
   const {
     backdrop,
+    history,
     imgUrl,
+    id,
     overview,
     title,
     voteAverage,
@@ -40,7 +43,10 @@ const CardItem = props => {
           >
             { hasWishlist ? <MDBIcon icon="heart" /> : <MDBIcon far icon="heart" /> }
           </button>
-          <div className="card-item-photo-holder">
+          <div
+            className="card-item-photo-holder"
+            onClick={ () => history.push(`/movie/${ id }`) }
+          >
             <MDBCardImage className="img-fluid" src={ imgUrl ? `https://image.tmdb.org/t/p/w500/${imgUrl}` : noPhoto } waves />
             <MDBCardImage className="img-fluid img-fixed" src={ backdrop ? `https://image.tmdb.org/t/p/w500/${ backdrop }` : noPhoto } waves />
           </div>
@@ -66,4 +72,4 @@ const CardItem = props => {
   );
 }
 
-export default CardItem;
+export default withRouter(CardItem);

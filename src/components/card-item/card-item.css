@@ -52,8 +52,12 @@
   outline: none;
 }
 
-.card-item .card-item-btn-wishlist.active {
+.card-item .card-item-btn-wishlist:hover {
   color: #c00;
+}
+
+.card-item .card-item-btn-wishlist.active {
+  color: #c00 !important;
 }
 
 .card-item .card:hover .card-item-btn-wishlist {

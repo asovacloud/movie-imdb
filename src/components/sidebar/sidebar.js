@@ -127,7 +127,7 @@ class Sidebar extends Component {
             <MDBBtn
               onClick={ this.onClearFilterSidebar }
               size="md"
-              className="text-center w-100 ml-0 mr-0 mb-0"
+              className="text-center w-100 ml-0 mr-0 mb-0 clear-filter"
             >Clear Filter</MDBBtn>
           </MDBCardBody>
         </MDBCard>

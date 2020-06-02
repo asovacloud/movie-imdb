@@ -10,6 +10,7 @@ import {
   MDBFormInline,
   MDBBadge,
 } from "mdbreact";
+import { withRouter } from 'react-router-dom';
 import { ReactComponent as Logo } from './logo.svg';
 
 import './header.css';
@@ -24,12 +25,20 @@ class NavbarPage extends Component {
   }
 
 render() {
-  const { wishlistCount } = this.props;
-const addBage = wishlistCount ? <MDBBadge color="danger" className="ml-2">{ wishlistCount }</MDBBadge> : '';
+  const {
+    history,
+    wishlistCount
+  } = this.props;
+  const addBage = wishlistCount ? <MDBBadge color="danger" className="ml-2">{ wishlistCount }</MDBBadge> : '';
   return (
     <MDBNavbar className="header mb-4" color="unique-color" dark expand="md">
       <MDBNavbarBrand>
-        <Logo />
+        <div
+          className="logo-holder"
+          onClick={ () => history.push('/') }
+        >
+          <Logo />
+        </div>
       </MDBNavbarBrand>
       <MDBNavbarToggler onClick={this.toggleCollapse} />
       <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
@@ -56,4 +65,4 @@ const addBage = wishlistCount ? <MDBBadge color="danger" className="ml-2">{ wish
   }
 }
 
-export default NavbarPage;
+export default withRouter(NavbarPage);

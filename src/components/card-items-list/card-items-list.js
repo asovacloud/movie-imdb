@@ -32,6 +32,7 @@ const CardItemsList = props => {
     const hasWishlist = (movieWishlistIndexList.indexOf(id)) !== -1;
     return (
       <CardItem
+        id={ id }
         key={ id }
         imgUrl={ imgUrl }
         overview={ overview }
