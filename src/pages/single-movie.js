@@ -47,7 +47,7 @@ export default class SingleMovie extends Component {
       tagline,
       title: name,
       vote_average: vote,
-      production_companies: productionCompanies
+      // production_companies: productionCompanies
     } = this.state.movieData;
 
     const {
@@ -60,10 +60,10 @@ export default class SingleMovie extends Component {
 
     const factsInfo = (
       <ul className="facts-info">
-        <li><strong className="facts-info__title">Status</strong><span className="facts-info__text">Released</span></li>
-        <li><strong className="facts-info__title">Original Language</strong><span className="facts-info__text">English</span></li>
+        <li><strong className="facts-info__title">Status</strong><span className="facts-info__text">{ status }</span></li>
+        <li><strong className="facts-info__title">Original Language</strong><span className="facts-info__text">{ language }</span></li>
         <li><strong className="facts-info__title">Budget</strong><span className="facts-info__text">${ budget }</span></li>
-        <li><strong className="facts-info__title">Revenue</strong><span className="facts-info__text">$132,807,427.00</span></li>
+        <li><strong className="facts-info__title">Revenue</strong><span className="facts-info__text">${ revenue }</span></li>
       </ul>
     );
 

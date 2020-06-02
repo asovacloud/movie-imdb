@@ -1,5 +1,11 @@
 import React from 'react';
-import {MDBBtn, MDBCardImage, MDBCol, MDBContainer, MDBIcon, MDBRow} from "mdbreact";
+import {
+  MDBCardImage,
+  MDBCol,
+  MDBContainer,
+  MDBIcon,
+  MDBRow
+} from "mdbreact";
 import {
   CircularProgressbar,
   buildStyles,
@@ -43,7 +49,7 @@ const SingleMovieBackgroundPoster = props => {
   const getFormattedDate = () => {
     const date = new Date(releaseDate);
     const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'numeric', day: '2-digit' })
-    const [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(date )
+    const [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat.formatToParts(date);
 
     return `${day}/${month}/${year }`;
   }
@@ -53,6 +59,7 @@ const SingleMovieBackgroundPoster = props => {
       <a
         target="_blank"
         href={ link }
+        rel="noopener noreferrer"
       >Link to site</a>
     </div>
   );
@@ -96,6 +103,7 @@ const SingleMovieBackgroundPoster = props => {
               <a
                 href={ (link) ? link : ''  }
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <MDBCardImage className="img-fluid" src={ poster ? `${ IMG_URL }w500/${ poster }` : noPhoto } waves />
               </a>
