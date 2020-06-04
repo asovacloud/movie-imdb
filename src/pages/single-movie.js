@@ -51,7 +51,6 @@ export default class SingleMovie extends Component {
       tagline,
       title: name,
       vote_average: vote,
-      // production_companies: productionCompanies
     } = this.state.movieData;
 
     const {
@@ -59,9 +58,6 @@ export default class SingleMovie extends Component {
       addMovieWishlist,
       removeMovieWishlist,
     } = this.props;
-
-    console.log(this.state.movieData);
-    console.log('movieWishlist', this.props.movieWishlist);
 
     const factsInfo = (
       <ul className="facts-info">

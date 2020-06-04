@@ -148,7 +148,7 @@ export default class App extends Component {
         <MDBContainer>
           <Switch>
             <Route
-              path="/"
+              path="/movie-imdb/"
               exact
             >
               <Home
@@ -170,7 +170,7 @@ export default class App extends Component {
               />
             </Route>
             <Route
-              path="/wishlist"
+              path="/movie-imdb/wishlist"
               exact
             >
               <Wishlist
@@ -179,7 +179,7 @@ export default class App extends Component {
               />
             </Route>
             <Route
-              path="/movie/:id"
+              path="/movie-imdb/movie/:id"
               render={ ({ match }) => {
                 const { id } = match.params;
                 return <SingleMovie

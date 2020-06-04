@@ -45,7 +45,7 @@ class NavbarPage extends Component {
         <MDBNavbarBrand>
           <div
             className="logo-holder"
-            onClick={ () => history.push('/') }
+            onClick={ () => history.push('/movie-imdb/') }
           >
             <Logo />
           </div>
@@ -54,10 +54,10 @@ class NavbarPage extends Component {
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
           <MDBNavbarNav left>
             <MDBNavItem>
-              <MDBNavLink exact to="/">Home</MDBNavLink>
+              <MDBNavLink exact to="/movie-imdb/">Home</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink exact to="/wishlist">Wishlist { addBage }</MDBNavLink>
+              <MDBNavLink exact to="/movie-imdb/wishlist">Wishlist { addBage }</MDBNavLink>
             </MDBNavItem>
           </MDBNavbarNav>
           <MDBNavbarNav right>
@@ -65,7 +65,7 @@ class NavbarPage extends Component {
               <MDBFormInline
                 onSubmit={ event => {
                   event.preventDefault();
-                  history.push('/');
+                  history.push('/movie-imdb/');
                   const url = `${ API_URL }/search/movie?api_key=${ API_KEY_3 }&language=en-US&query=${ this.state.searchValue }&page=1`;
                   this.setState({ searchValue: '' });
 

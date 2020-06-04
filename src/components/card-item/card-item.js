@@ -45,7 +45,7 @@ const CardItem = props => {
           </button>
           <div
             className="card-item-photo-holder"
-            onClick={ () => history.push(`/movie/${ id }`) }
+            onClick={ () => history.push(`/movie-imdb/movie/${ id }`) }
           >
             <MDBCardImage className="img-fluid" src={ imgUrl ? `https://image.tmdb.org/t/p/w500/${imgUrl}` : noPhoto } waves />
             <MDBCardImage className="img-fluid img-fixed" src={ backdrop ? `https://image.tmdb.org/t/p/w500/${ backdrop }` : noPhoto } waves />
