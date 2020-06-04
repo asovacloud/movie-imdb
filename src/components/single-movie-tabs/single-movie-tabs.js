@@ -9,10 +9,11 @@ import {
   MDBCard,
   MDBCardTitle,
 } from "mdbreact";
+import { withRouter } from 'react-router-dom';
 
 import './single-movie-tabs.css';
 
-export default class SingleMovieTabs extends Component {
+class SingleMovieTabs extends Component {
   state = {
     videosData: [],
     postersData: [],
@@ -24,10 +25,15 @@ export default class SingleMovieTabs extends Component {
     const url = `${ API_URL }/movie/${ this.props.id }/videos?api_key=${ API_KEY_3 }`;
     fetch(url)
       .then(response => {
-        return response.json();
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          this.props.history.push('/movie-imdb/404');
+          return [];
+        }
       })
       .then(data => {
-        const newData = data.results;
+        const newData = data.hasOwnProperty('results') ? data.results : [];
         this.setState({ videosData: newData });
       });
   }
@@ -36,10 +42,15 @@ export default class SingleMovieTabs extends Component {
     const url = `${ API_URL }/movie/${ this.props.id }/images?api_key=${ API_KEY_3 }`;
     fetch(url)
       .then(response => {
-        return response.json();
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          this.props.history.push('/movie-imdb/404');
+          return [];
+        }
       })
         .then(data => {
-        const newData = data.backdrops;
+        const newData = data.hasOwnProperty('backdrops') ? data.backdrops : [];
         this.setState({ postersData: newData });
       });
   }
@@ -48,10 +59,15 @@ export default class SingleMovieTabs extends Component {
     const url = `${ API_URL }/movie/${ this.props.id }/recommendations?api_key=${ API_KEY_3 }&language=en-US&page=1`;
     fetch(url)
       .then(response => {
-        return response.json();
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          this.props.history.push('/movie-imdb/404');
+          return [];
+        }
       })
       .then(data => {
-        const newData = data.results;
+        const newData = data.hasOwnProperty('results') ? data.results : [];
         this.setState({ recomendationsData: newData });
       });
   }
@@ -81,7 +97,7 @@ export default class SingleMovieTabs extends Component {
 
     const videoContent = (
       <div className="tab-content">
-        { videosData.length && videosData.map(({ key, name }) => {
+        { videosData.length > 0 && videosData.map(({ key, name }) => {
           return <iframe className="embed-responsive-item" name={ name } title={ name } key={ key } src={ "https://www.youtube.com/embed/" + key }></iframe>;
         } ) }
       </div>
@@ -157,3 +173,5 @@ export default class SingleMovieTabs extends Component {
   }
 
 }
+
+export default withRouter(SingleMovieTabs);

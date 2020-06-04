@@ -190,6 +190,7 @@ export default class App extends Component {
                 />
               } }
             />
+            <Route path="/movie-imdb/404" component={ NotFound } />
             <Route component={ NotFound } />
           </Switch>
         </MDBContainer>

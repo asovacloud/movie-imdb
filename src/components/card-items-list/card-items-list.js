@@ -46,7 +46,7 @@ const CardItemsList = props => {
     );
   });
 
-  const pagination = <nav className="mt-3 mb-3" aria-label="Page navigation">
+  const pagination = <nav className="mb-3 mb-3" aria-label="Page navigation">
     <ReactPaginate
       previousLabel={ '◄' }
       nextLabel={ '►' }
@@ -71,6 +71,7 @@ const CardItemsList = props => {
 
   return (
     <MDBCol lg="9" className="card-items-list">
+
       <MDBRow>
         { movieData.length > 0 ? content : <Spinner /> }
       </MDBRow>

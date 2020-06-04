@@ -14,7 +14,7 @@ const WishlistHeader = () => {
           className="text-center"
           style={{ whiteSpace: "nowrap" }}
         ><span className="text-warning">&#9733;</span> Rating</th>
-        <th className="red-text text-center">Reject</th>
+        <th className="text-center">Reject</th>
       </tr>
     </MDBTableHead>
   );

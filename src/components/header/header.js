@@ -41,60 +41,62 @@ class NavbarPage extends Component {
 
     const addBage = wishlistCount ? <MDBBadge color="danger" className="ml-2">{ wishlistCount }</MDBBadge> : '';
     return (
-      <MDBNavbar className="header mb-4" color="unique-color" dark expand="md">
-        <MDBNavbarBrand>
-          <div
-            className="logo-holder"
-            onClick={ () => history.push('/movie-imdb/') }
-          >
-            <Logo />
-          </div>
-        </MDBNavbarBrand>
-        <MDBNavbarToggler onClick={this.toggleCollapse} />
-        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-          <MDBNavbarNav left>
-            <MDBNavItem>
-              <MDBNavLink exact to="/movie-imdb/">Home</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink exact to="/movie-imdb/wishlist">Wishlist { addBage }</MDBNavLink>
-            </MDBNavItem>
-          </MDBNavbarNav>
-          <MDBNavbarNav right>
-            <MDBNavItem>
-              <MDBFormInline
-                onSubmit={ event => {
-                  event.preventDefault();
-                  history.push('/movie-imdb/');
-                  const url = `${ API_URL }/search/movie?api_key=${ API_KEY_3 }&language=en-US&query=${ this.state.searchValue }&page=1`;
-                  this.setState({ searchValue: '' });
+      <header>
+        <MDBNavbar className="header mb-4 navbar" color="unique-color" dark expand="md">
+          <MDBNavbarBrand>
+            <div
+              className="logo-holder"
+              onClick={ () => history.push('/movie-imdb/') }
+            >
+              <Logo />
+            </div>
+          </MDBNavbarBrand>
+          <MDBNavbarToggler onClick={this.toggleCollapse} />
+          <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+            <MDBNavbarNav left>
+              <MDBNavItem>
+                <MDBNavLink exact to="/movie-imdb/">Home</MDBNavLink>
+              </MDBNavItem>
+              <MDBNavItem>
+                <MDBNavLink exact to="/movie-imdb/wishlist">Wishlist { addBage }</MDBNavLink>
+              </MDBNavItem>
+            </MDBNavbarNav>
+            <MDBNavbarNav right>
+              <MDBNavItem>
+                <MDBFormInline
+                  onSubmit={ event => {
+                    event.preventDefault();
+                    history.push('/movie-imdb/');
+                    const url = `${ API_URL }/search/movie?api_key=${ API_KEY_3 }&language=en-US&query=${ this.state.searchValue }&page=1`;
+                    this.setState({ searchValue: '' });
 
-                  fetch(url)
-                    .then(response => {
-                      return response.json();
-                    })
-                    .then(data => {
-                      this.props.onSearchSubmit(data.results);
-                    });
+                    fetch(url)
+                      .then(response => {
+                        return response.json();
+                      })
+                      .then(data => {
+                        this.props.onSearchSubmit(data.results);
+                      });
 
-                } }
-                waves
-              >
-                <div className="md-form my-0">
-                  <input
-                    className="form-control mr-sm-2"
-                    type="text"
-                    placeholder="Search"
-                    aria-label="Search"
-                    value={ searchValue }
-                    onChange={ this.onValueChange }
-                  />
-                </div>
-              </MDBFormInline>
-            </MDBNavItem>
-          </MDBNavbarNav>
-        </MDBCollapse>
-      </MDBNavbar>
+                  } }
+                  waves
+                >
+                  <div className="md-form my-0">
+                    <input
+                      className="form-control mr-sm-2"
+                      type="text"
+                      placeholder="Search"
+                      aria-label="Search"
+                      value={ searchValue }
+                      onChange={ this.onValueChange }
+                    />
+                  </div>
+                </MDBFormInline>
+              </MDBNavItem>
+            </MDBNavbarNav>
+          </MDBCollapse>
+        </MDBNavbar>
+      </header>
       );
   }
 }
