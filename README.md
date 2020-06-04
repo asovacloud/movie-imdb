@@ -1,5 +1,4 @@
-# React Bootstrap with Material Design
-MDBootstrap for React
+# Movie IMDb React.js app
 
 ## Used technologies
 ### Base React
@@ -19,6 +18,7 @@ MDBootstrap for React
 
 ### Additional
 * Bootstrap with Material Design
+* MDBootstrap for React
 * React Router
 * Work with a real API
 
