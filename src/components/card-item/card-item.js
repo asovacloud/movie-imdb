@@ -34,7 +34,7 @@ const CardItem = props => {
   const voteAverageSum = voteAverage * 10;
   const onClickWishlist = () => hasWishlist ? removeMovieWishlist() : addMovieWishlist();
   return (
-    <MDBCol size="4" className="mb-4 card-item">
+    <MDBCol md="4" className="mb-4 card-item">
       <MDBCard>
         <div className="card-item-photo">
           <button

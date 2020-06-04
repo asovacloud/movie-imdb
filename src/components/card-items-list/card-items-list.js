@@ -70,7 +70,7 @@ const CardItemsList = props => {
   </nav>;
 
   return (
-    <MDBCol size="9" className="card-items-list">
+    <MDBCol lg="9" className="card-items-list">
       <MDBRow>
         { movieData.length > 0 ? content : <Spinner /> }
       </MDBRow>

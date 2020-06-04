@@ -105,7 +105,7 @@ class Sidebar extends Component {
     </select>;
 
     return (
-      <MDBCol size="3" className="sidebar">
+        <MDBCol lg="3" className="sidebar">
         <MDBCard className="mb-4">
           <MDBCardHeader className="pl-3 pr-3 pt-2 pb-2" color="unique-color">Filter:</MDBCardHeader>
           <MDBCardBody className="p-3">

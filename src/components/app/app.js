@@ -21,6 +21,8 @@ export default class App extends Component {
   thisMovieWishlist = window.localStorage.getItem('movieWishlist')
     ? JSON.parse(window.localStorage.getItem('movieWishlist')) : [];
 
+  isSearchActive = false;
+
   state = {
     currentPage: 1,
     currentGenre: [],
@@ -51,6 +53,7 @@ export default class App extends Component {
   componentDidMount() { this.getMovies(); }
 
   componentDidUpdate(prevProps, prevState) {
+    if ( this.isSearchActive ) return;
     if (
       ( prevState.sort_by !== this.state.sort_by )
       || ( prevState.language !== this.state.language )
@@ -118,6 +121,13 @@ export default class App extends Component {
     window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
+  onSearchSubmit = data => {
+    this.isSearchActive = true;
+    this.onClearFilter();
+    this.isSearchActive = false;
+    this.setState({ movieData: data });
+  }
+
   render() {
     const {
       currentGenre,
@@ -131,7 +141,10 @@ export default class App extends Component {
 
     return (
       <Router>
-        <Header wishlistCount={ movieWishlist.length } />
+        <Header
+          wishlistCount={ movieWishlist.length }
+          onSearchSubmit={ this.onSearchSubmit }
+        />
         <MDBContainer>
           <Switch>
             <Route

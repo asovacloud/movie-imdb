@@ -1,10 +1,9 @@
 import React from 'react';
+import NotFoundContent from '../components/not-found-content';
 
 const NotFound = () => {
   return (
-    <>
-      <p>That page wasn't found.</p>
-    </>
+    <NotFoundContent />
   );
 };
 

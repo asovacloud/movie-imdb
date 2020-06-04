@@ -97,3 +97,10 @@
   height: 30px;
   background: linear-gradient(0deg, white 20%, transparent 100%);
 }
+
+@media (max-width: 991.98px) {
+  .card-item .card .CircularProgressbar,
+  .card-item .card-item-btn-wishlist {
+    opacity: 1;
+  }
+}
