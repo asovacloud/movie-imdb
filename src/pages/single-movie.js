@@ -6,7 +6,6 @@ import {
 } from 'mdbreact';
 import SingleMovieBackgroundPoster from '../components/single-movie-background-poster';
 import SingleMovieTabs from '../components/single-movie-tabs';
-import SingleMovieRecomendations from '../components/single-movie-recomendations';
 
 export default class SingleMovie extends Component {
   state = {
@@ -101,7 +100,6 @@ export default class SingleMovie extends Component {
             { factsInfo }
           </MDBCol>
         </MDBRow>
-        <SingleMovieRecomendations />
       </>
     );
   }
