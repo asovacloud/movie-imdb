@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "158d50398a76ed91f799fe625c4a65ea",
+    "revision": "7a1ff393b9763beb3ec346bea1956b60",
     "url": "/movie-imdb/index.html"
   },
   {
-    "revision": "0a333156680517d1f36c",
+    "revision": "84150abd78bbc1410bbf",
     "url": "/movie-imdb/static/css/2.7be5b5f5.chunk.css"
   },
   {
-    "revision": "1ea5f2b759341bd9d4e0",
+    "revision": "f1e4f56cc9532d7fdfc9",
     "url": "/movie-imdb/static/css/main.78688682.chunk.css"
   },
   {
-    "revision": "0a333156680517d1f36c",
-    "url": "/movie-imdb/static/js/2.4c3e4b53.chunk.js"
+    "revision": "84150abd78bbc1410bbf",
+    "url": "/movie-imdb/static/js/2.df272adc.chunk.js"
   },
   {
     "revision": "b46eae19120e0343c25f399c83a404d7",
-    "url": "/movie-imdb/static/js/2.4c3e4b53.chunk.js.LICENSE.txt"
+    "url": "/movie-imdb/static/js/2.df272adc.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1ea5f2b759341bd9d4e0",
-    "url": "/movie-imdb/static/js/main.7242ac5c.chunk.js"
+    "revision": "f1e4f56cc9532d7fdfc9",
+    "url": "/movie-imdb/static/js/main.0865839b.chunk.js"
   },
   {
     "revision": "be67f4843aaaaae6fc09",
