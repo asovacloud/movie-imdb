@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/movie-imdb/static/css/main.78688682.chunk.css",
+    "main.js": "/movie-imdb/static/js/main.1b6cc9a3.chunk.js",
+    "main.js.map": "/movie-imdb/static/js/main.1b6cc9a3.chunk.js.map",
+    "runtime-main.js": "/movie-imdb/static/js/runtime-main.dce80975.js",
+    "runtime-main.js.map": "/movie-imdb/static/js/runtime-main.dce80975.js.map",
+    "static/css/2.7be5b5f5.chunk.css": "/movie-imdb/static/css/2.7be5b5f5.chunk.css",
+    "static/js/2.4c3e4b53.chunk.js": "/movie-imdb/static/js/2.4c3e4b53.chunk.js",
+    "static/js/2.4c3e4b53.chunk.js.map": "/movie-imdb/static/js/2.4c3e4b53.chunk.js.map",
+    "index.html": "/movie-imdb/index.html",
+    "precache-manifest.99cbe75079e4c3d147942dbe1f0f0867.js": "/movie-imdb/precache-manifest.99cbe75079e4c3d147942dbe1f0f0867.js",
+    "service-worker.js": "/movie-imdb/service-worker.js",
+    "static/css/2.7be5b5f5.chunk.css.map": "/movie-imdb/static/css/2.7be5b5f5.chunk.css.map",
+    "static/css/main.78688682.chunk.css.map": "/movie-imdb/static/css/main.78688682.chunk.css.map",
+    "static/js/2.4c3e4b53.chunk.js.LICENSE.txt": "/movie-imdb/static/js/2.4c3e4b53.chunk.js.LICENSE.txt",
+    "static/media/mdb.css": "/movie-imdb/static/media/arrow_right.8ef6a08c.svg",
+    "static/media/all.min.css": "/movie-imdb/static/media/fa-solid-900.ec763292.svg",
+    "static/media/image-asset.jpeg": "/movie-imdb/static/media/image-asset.7fc93130.jpeg",
+    "static/media/logo.08392f18.svg": "/movie-imdb/static/media/logo.08392f18.svg",
+    "static/media/no_photo.jpg": "/movie-imdb/static/media/no_photo.54120d3b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dce80975.js",
+    "static/css/2.7be5b5f5.chunk.css",
+    "static/js/2.4c3e4b53.chunk.js",
+    "static/css/main.78688682.chunk.css",
+    "static/js/main.1b6cc9a3.chunk.js"
+  ]
+}
