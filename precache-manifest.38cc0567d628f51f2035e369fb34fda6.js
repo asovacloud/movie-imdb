@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0e65ecf0cf6f4063c457001d74ae52a3",
+    "revision": "158d50398a76ed91f799fe625c4a65ea",
     "url": "/movie-imdb/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/movie-imdb/static/css/2.7be5b5f5.chunk.css"
   },
   {
-    "revision": "cd5ede9c545b30133f7a",
+    "revision": "1ea5f2b759341bd9d4e0",
     "url": "/movie-imdb/static/css/main.78688682.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/movie-imdb/static/js/2.4c3e4b53.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "cd5ede9c545b30133f7a",
-    "url": "/movie-imdb/static/js/main.1b6cc9a3.chunk.js"
+    "revision": "1ea5f2b759341bd9d4e0",
+    "url": "/movie-imdb/static/js/main.7242ac5c.chunk.js"
   },
   {
     "revision": "be67f4843aaaaae6fc09",

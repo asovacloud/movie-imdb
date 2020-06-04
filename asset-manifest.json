@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/movie-imdb/static/css/main.78688682.chunk.css",
-    "main.js": "/movie-imdb/static/js/main.1b6cc9a3.chunk.js",
-    "main.js.map": "/movie-imdb/static/js/main.1b6cc9a3.chunk.js.map",
+    "main.js": "/movie-imdb/static/js/main.7242ac5c.chunk.js",
+    "main.js.map": "/movie-imdb/static/js/main.7242ac5c.chunk.js.map",
     "runtime-main.js": "/movie-imdb/static/js/runtime-main.dce80975.js",
     "runtime-main.js.map": "/movie-imdb/static/js/runtime-main.dce80975.js.map",
     "static/css/2.7be5b5f5.chunk.css": "/movie-imdb/static/css/2.7be5b5f5.chunk.css",
     "static/js/2.4c3e4b53.chunk.js": "/movie-imdb/static/js/2.4c3e4b53.chunk.js",
     "static/js/2.4c3e4b53.chunk.js.map": "/movie-imdb/static/js/2.4c3e4b53.chunk.js.map",
     "index.html": "/movie-imdb/index.html",
-    "precache-manifest.99cbe75079e4c3d147942dbe1f0f0867.js": "/movie-imdb/precache-manifest.99cbe75079e4c3d147942dbe1f0f0867.js",
+    "precache-manifest.38cc0567d628f51f2035e369fb34fda6.js": "/movie-imdb/precache-manifest.38cc0567d628f51f2035e369fb34fda6.js",
     "service-worker.js": "/movie-imdb/service-worker.js",
     "static/css/2.7be5b5f5.chunk.css.map": "/movie-imdb/static/css/2.7be5b5f5.chunk.css.map",
     "static/css/main.78688682.chunk.css.map": "/movie-imdb/static/css/main.78688682.chunk.css.map",
@@ -25,6 +25,6 @@
     "static/css/2.7be5b5f5.chunk.css",
     "static/js/2.4c3e4b53.chunk.js",
     "static/css/main.78688682.chunk.css",
-    "static/js/main.1b6cc9a3.chunk.js"
+    "static/js/main.7242ac5c.chunk.js"
   ]
 }
