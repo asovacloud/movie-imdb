@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { API_KEY_3, API_URL } from "../../utils/api";
 import {
-  MDBContainer,
   MDBTabPane,
   MDBTabContent,
   MDBNav,
   MDBNavItem,
   MDBNavLink,
   MDBCard,
-  MDBCardImage,
-  MDBCardBody,
   MDBCardTitle,
 } from "mdbreact";
 
@@ -32,7 +29,6 @@ export default class SingleMovieTabs extends Component {
       .then(data => {
         const newData = data.results;
         this.setState({ videosData: newData });
-        console.log('TABS newData', newData);
       });
   }
 
@@ -45,7 +41,6 @@ export default class SingleMovieTabs extends Component {
         .then(data => {
         const newData = data.backdrops;
         this.setState({ postersData: newData });
-        console.log('POSTERS newData', newData);
       });
   }
 
@@ -58,7 +53,6 @@ export default class SingleMovieTabs extends Component {
       .then(data => {
         const newData = data.results;
         this.setState({ recomendationsData: newData });
-        console.log('RECOMENDATIONS newData', newData);
       });
   }
 
@@ -87,8 +81,8 @@ export default class SingleMovieTabs extends Component {
 
     const videoContent = (
       <div className="tab-content">
-        { videosData.length && videosData.map(({ key }) => {
-          return <iframe className="embed-responsive-item" key={ key } src={ "https://www.youtube.com/embed/" + key }></iframe>;
+        { videosData.length && videosData.map(({ key, name }) => {
+          return <iframe className="embed-responsive-item" name={ name } title={ name } key={ key } src={ "https://www.youtube.com/embed/" + key }></iframe>;
         } ) }
       </div>
     );

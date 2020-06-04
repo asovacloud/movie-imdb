@@ -32,6 +32,7 @@
   border: none;
   margin: 0 0 20px 1rem;
   padding: 0;
+  object-fit: cover;
 }
 
 .single-movie-tabs .tab-content iframe {
@@ -76,4 +77,20 @@
   position: relative;
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 767.98px) {
+  .single-movie-tabs {
+    padding-top: 1.2rem;
+  }
+
+  .single-movie-tabs h3 {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+
+  .single-movie-tabs .nav-tabs .nav-link {
+    padding: .2rem .4rem;
+  }
+
 }

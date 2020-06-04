@@ -98,7 +98,7 @@ const SingleMovieBackgroundPoster = props => {
           </MDBRow>
         }
         { (name) &&
-          <MDBRow className="pt-5 pb-5 align-items-center">
+          <MDBRow className="pt-5 pb-5">
             <MDBCol md="4">
               <a
                 href={ (link) ? link : ''  }

@@ -90,14 +90,14 @@ export default class SingleMovie extends Component {
           vote = { vote }
           hasWishlist = { this.checkHasWishlist }
         />
-        <MDBRow>
+        <MDBRow className="flex-row-reverse mb-3">
+          <MDBCol md="3">
+            { factsInfo }
+          </MDBCol>
           <MDBCol md="9">
             <SingleMovieTabs
               id={ id }
             />
-          </MDBCol>
-          <MDBCol md="3">
-            { factsInfo }
           </MDBCol>
         </MDBRow>
       </>
